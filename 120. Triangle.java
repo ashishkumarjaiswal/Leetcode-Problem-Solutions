@@ -17,3 +17,21 @@ class Solution {
                 + Math.min(fun(triangle, i + 1, j, dp), fun(triangle, i + 1, j + 1, dp));
     }
 }
+//Another one
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        Integer[][] dp = new Integer[triangle.size()][triangle.size()];
+        return fun(triangle, dp, 0, 0);
+    }
+
+    int fun(List<List<Integer>> triangle, Integer[][] dp, int i, int j) {
+        if (i >= triangle.size()) {
+            return 0;
+        }
+        if (dp[i][j] != null) {
+            return dp[i][j];
+        }
+        dp[i][j] = Math.min(fun(triangle, dp, i + 1, j), fun(triangle, dp, i + 1, j + 1)) + triangle.get(i).get(j);
+        return dp[i][j];
+    }
+}
