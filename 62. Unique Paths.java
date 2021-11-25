@@ -48,3 +48,24 @@ class Solution {
         return dp[i][j];
     }
 }
+//One More
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int[][] dp = new int[m][n];
+        return fun(m, n, dp, 0, 0);
+    }
+
+    int fun(int m, int n, int[][] dp, int i, int j) {
+        if (i >= m || j >= n) {
+            return 0;
+        }
+        if (i == m - 1 && j == n - 1) {
+            return 1;
+        }
+        if (dp[i][j] != 0) {
+            return dp[i][j];
+        }
+        dp[i][j] = fun(m, n, dp, i + 1, j) + fun(m, n, dp, i, j + 1);
+        return dp[i][j];
+    }
+}
