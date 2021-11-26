@@ -33,3 +33,24 @@ class Solution {
         return arr[i][j];
     }
 }
+//Another one
+class Solution {
+    public int minPathSum(int[][] grid) {
+        int[][] dp = new int[grid.length][grid[0].length];
+        return fun(grid, dp, 0, 0);
+    }
+
+    int fun(int[][] grid, int[][] dp, int i, int j) {
+        if (i >= grid.length || j >= grid[0].length) {
+            return Integer.MAX_VALUE;
+        }
+        if (i == grid.length - 1 && j == grid[0].length - 1) {
+            return grid[i][j];
+        }
+        if (dp[i][j] != 0) {
+            return dp[i][j];
+        }
+
+        return dp[i][j] = Math.min(fun(grid, dp, i + 1, j), fun(grid, dp, i, j + 1)) + grid[i][j];
+    }
+}
