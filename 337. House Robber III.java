@@ -15,3 +15,26 @@ class Solution {
         return ans;
     }
 }
+//Using class and Object
+class Solution {
+    public int rob(TreeNode root) {
+        pair res = fun(root);
+        return Math.max(res.rob, res.notrob);
+    }
+
+    public class pair {
+        int rob = 0;
+        int notrob = 0;
+    }
+
+    pair fun(TreeNode root) {
+        if (root == null)
+            return new pair();
+        pair left = fun(root.left);
+        pair right = fun(root.right);
+        pair ans = new pair();
+        ans.rob = root.val + left.notrob + right.notrob;
+        ans.notrob = Math.max(left.rob, left.notrob) + Math.max(right.rob, right.notrob);
+        return ans;
+    }
+}
