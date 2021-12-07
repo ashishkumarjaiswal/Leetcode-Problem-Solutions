@@ -1,3 +1,25 @@
+//Using Two Pointers
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int start, count;
+        count = start = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) {
+                if (count < 2)
+                    count++;
+                else
+                    continue;
+            } else {
+                count = 1;
+            }
+            nums[start] = nums[i];
+            start++;
+        }
+        return start;
+    }
+}
+
+
 //Using TreeMap
 class Solution {
     public int removeDuplicates(int[] nums) {
