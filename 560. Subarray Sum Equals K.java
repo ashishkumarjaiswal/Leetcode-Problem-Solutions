@@ -1,4 +1,4 @@
-//By the use of
+//By the use of Hashing
 class Solution {
     public int subarraySum(int[] nums, int k) {
         HashMap<Integer, Integer> table = new HashMap<>();
