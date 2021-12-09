@@ -1,3 +1,4 @@
+//Using Linked List
 class Solution {
     List<Integer> ans = new ArrayList<>();
 
@@ -20,5 +21,24 @@ class Solution {
         ans.add(root.val);
         fun(root.left);
         fun(root.right);
+    }
+}
+
+//Using Recursion
+class Solution {
+    public void flatten(TreeNode root) {
+        if (root == null)
+            return;
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        root.left = null;
+        flatten(left);
+        flatten(right);
+        root.right = left;
+        TreeNode curr = root;
+        while (curr.right != null) {
+            curr = curr.right;
+        }
+        curr.right = right;
     }
 }
