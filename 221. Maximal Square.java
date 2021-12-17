@@ -28,3 +28,28 @@ class Solution {
         return max * max;
     }
 }
+//Another One
+class Solution {
+    Integer[][] dp;
+
+    public int maximalSquare(char[][] matrix) {
+        dp = new Integer[matrix.length][matrix[0].length];
+        int max = 0;
+        for (int i = matrix.length - 1; i >= 0; i--) {
+            for (int j = matrix[0].length-1; j >= 0; j--) {
+                if (matrix[i][j] != '0') {
+                    if (i + 1 >= matrix.length || j + 1 >= matrix[0].length) {
+                        dp[i][j] = 1;
+                    } else
+                        dp[i][j] = Math.min(Math.min(dp[i + 1][j], dp[i][j + 1]), dp[i + 1][j + 1]) + 1;
+                } else {
+                    dp[i][j] = 0;
+                }
+                if (dp[i][j] > max)
+                    max = dp[i][j];
+            }
+
+        }
+        return max*max;
+    }
+}
