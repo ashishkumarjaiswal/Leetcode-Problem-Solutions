@@ -1,3 +1,4 @@
+//by the use of String
 class Solution {
     public int bitwiseComplement(int n) {
         String str = Integer.toBinaryString(n);
@@ -9,5 +10,19 @@ class Solution {
                 s = s + '0';
         }
         return Integer.parseInt(s, 2);
+    }
+}
+//Using Bitwise Operator 
+class Solution {
+    public int bitwiseComplement(int n) {
+        if(n==0)
+            return 1;
+        int mask = 1, num = n;
+        while (num != 0) {
+            n = n ^ mask;
+            mask = mask << 1;
+            num = num >> 1;
+        }
+        return n;
     }
 }
