@@ -1,18 +1,12 @@
 class Solution {
     public TreeNode constructMaximumBinaryTree(int[] nums) {
-        return fun(nums);
-    }
-
-    TreeNode fun(int[] nums) {
         if (nums.length == 0)
             return null;
         TreeNode root = new TreeNode();
         int maxIndex = max(nums);
         root.val = nums[maxIndex];
-        TreeNode left = fun(Arrays.copyOfRange(nums, 0, maxIndex));
-        TreeNode right = fun(Arrays.copyOfRange(nums, maxIndex + 1, nums.length));
-        root.left = left;
-        root.right = right;
+         root.left = constructMaximumBinaryTree(Arrays.copyOfRange(nums, 0, maxIndex));
+         root.right = constructMaximumBinaryTree(Arrays.copyOfRange(nums, maxIndex + 1, nums.length));
         return root;
     }
 
