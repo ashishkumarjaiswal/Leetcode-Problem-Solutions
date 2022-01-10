@@ -59,3 +59,14 @@ class Solution {
         return ans.reverse().toString();
     }
 }
+
+//Another Solution Using BigInteger
+import java.math.BigInteger;
+class Solution {
+    public String addBinary(String a, String b) {
+        BigInteger x = new BigInteger(a, 2);
+        BigInteger y = new BigInteger(b, 2);
+        BigInteger result = x.add(y);
+        return result.toString(2);
+    }
+}
