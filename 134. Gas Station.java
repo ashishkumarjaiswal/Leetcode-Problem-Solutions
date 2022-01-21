@@ -20,3 +20,22 @@ class Solution {
         return (ind + 1);
     }
 }
+
+
+class Solution {
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        int gasSum = 0, costSum = 0, temp = 0, min = Integer.MAX_VALUE, ind = 0;
+        for (int i = 0; i < cost.length; i++) {
+            costSum = costSum + cost[i];
+            gasSum = gasSum + gas[i];
+            temp = temp + gas[i] - cost[i];
+            if (temp < min) {
+                min = temp;
+                ind = i;
+            }
+        }
+        if (gasSum < costSum)
+            return -1;
+        return ((ind + 1) % gas.length);
+    }
+}
