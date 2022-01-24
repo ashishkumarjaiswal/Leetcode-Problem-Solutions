@@ -11,9 +11,7 @@ class Solution {
                 countMiddle++;
             }
         }
-        if (isFirstCapital && !isAnotherCapital) {
-            return true;
-        } else if (isFirstCapital && isAnotherCapital) {
+        if (isFirstCapital && isAnotherCapital) {
             if (countMiddle == word.length() - 1)
                 return true;
             return false;
