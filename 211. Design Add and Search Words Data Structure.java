@@ -39,8 +39,8 @@ class WordDictionary {
                     return true;
             }
         } else {
-            if (fun(curr.arr[index - 'a'], word, i + 1))
-                return true;
+            return (fun(curr.arr[index - 'a'], word, i + 1));
+                 
         }
         return false;
     }
