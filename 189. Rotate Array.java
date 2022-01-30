@@ -35,3 +35,17 @@ class Solution {
         }
     }
 }
+
+//Method 3
+
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int[] arr = nums.clone();
+        int x = 0;
+        k = k % nums.length;
+        int a = nums.length - k;
+        for (int i = 0; i < nums.length; i++) {
+            nums[x++] = arr[(a + i) % nums.length];
+        }
+    }
+}
