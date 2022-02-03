@@ -18,3 +18,18 @@ class Solution {
 
     }
 }
+
+//using set
+class Solution {
+    public int findCenter(int[][] edges) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int[] is : edges) {
+            for (int i : is) {
+                if (!set.add(i)) {
+                    return i;
+                }
+            }
+        }
+        return 0;
+    }
+}
