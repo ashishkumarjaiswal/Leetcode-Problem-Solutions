@@ -1,5 +1,21 @@
 class Solution {
     public int change(int amount, int[] coins) {
+        int[] dp = new int[amount + 1];
+        dp[0] = 1;
+
+        for (int i = 0; i < coins.length; i++) {
+            for (int j = coins[i]; j < dp.length; j++) {
+                dp[j] += dp[j - coins[i]];
+            }
+        }
+        return dp[dp.length - 1];
+    }
+}
+
+//Another one
+
+class Solution {
+    public int change(int amount, int[] coins) {
         HashMap<String, Integer> map = new HashMap<>();
         return fun(amount, coins, 0, map);
     }
