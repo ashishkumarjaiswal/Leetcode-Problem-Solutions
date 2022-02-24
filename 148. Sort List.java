@@ -68,3 +68,59 @@ class Solution {
         return slow;
     }
 }
+//by Merge sort(fast)
+class Solution {
+    public ListNode sortList(ListNode head) {
+        return merge(head);
+    }
+
+    ListNode merge(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+
+        ListNode mid = middle(head);
+
+        ListNode left = merge(head);
+        ListNode right = merge(mid);
+
+        return mergetwo(left, right);
+
+    }
+
+    ListNode mergetwo(ListNode left, ListNode right) {
+        ListNode ans = new ListNode(56);
+        ListNode result = ans;
+
+        while (left != null && right != null) {
+            if (left.val < right.val) {
+                ans.next = left;
+                left = left.next;
+            } else {
+                ans.next = right;
+                right = right.next;
+            }
+            ans = ans.next;
+        }
+
+        ans.next = left == null ? right : left;
+
+        return result.next;
+    }
+
+    ListNode middle(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+
+        ListNode slow = head, fast = head, prev = null;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            prev = slow;
+            slow = slow.next;
+        }
+        if (prev != null)
+            prev.next = null;
+
+        return slow;
+    }
+}
