@@ -32,3 +32,39 @@ class Solution {
         inorder(root.right, key);
     }
 }
+
+//optimiseclass Solution {
+    public TreeNode deleteNode(TreeNode root, int key) {
+        if (root == null)
+            return null;
+
+        if (root.val < key) {
+            root.right = deleteNode(root.right, key);
+        } else if (root.val > key) {
+            root.left = deleteNode(root.left, key);
+        } else {
+            if (root.left != null && root.right != null) {
+                int x = findMax(root.left);
+                root.val = x;
+                root.left = deleteNode(root.left, x);
+                return root;
+            } else if (root.left != null) {
+                return root.left;
+            } else if (root.right != null) {
+                return root.right;
+            } else {
+                return null;
+            }
+        }
+        return root;
+    }
+
+    int findMax(TreeNode root) {
+        int max = Integer.MIN_VALUE;
+        while (root != null) {
+            max = Math.max(max, root.val);
+            root = root.right;
+        }
+        return max;
+    }
+}
