@@ -1,3 +1,5 @@
+//Using DFS
+
 class Solution {
     HashSet<String> set = new HashSet<>();
     String ans = "";
@@ -31,5 +33,39 @@ class Solution {
             return;
 
         fun(n, curr + "1");
+    }
+}
+
+//Using BFS
+
+class Solution {
+
+    public String findDifferentBinaryString(String[] nums) {
+        HashSet<String> set = new HashSet<>();
+        int n = nums[0].length();
+
+        for (String s : nums) {
+            set.add(s);
+        }
+
+        Queue<String> q = new LinkedList<>();
+        q.add("");
+
+        while (!q.isEmpty()) {
+            String s = q.poll();
+
+            if (s.length() == n) {
+                if (!set.contains(s)) {
+                    return s;
+                }
+
+                continue;
+            }
+
+            q.add(s + "0");
+            q.add(s + "1");
+        }
+
+        return "ashish";
     }
 }
